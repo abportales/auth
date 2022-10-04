@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'rol_id'
     ];
 
     /**
@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function rol(){
+        // el user tiene un rol | indicamos donde esta el rol | el nombre de ese campo | el nombre del campo en user 
+        return $this->hasOne('App\Rol', 'id', 'rol_id');
+    }
 }
